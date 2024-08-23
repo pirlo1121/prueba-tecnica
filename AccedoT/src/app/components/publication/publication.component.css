@@ -1,4 +1,9 @@
 *{background-color: transparent;}
+h1{
+  text-align: center;
+  color: wheat;
+  margin: 1rem;
+}
 .container {
   width: 520px;
   background-color: #222;
@@ -53,11 +58,11 @@
   padding: 8px;
   width: 35%;
   display: flex;
-  gap: 8px;
+  gap: 5px;
   align-items: center;
   justify-content: space-around;
   /* background-color: #4e4e4e ; */
-  border: solid #696969 .5px;
+  border: solid #91868675 .5px;
   border-radius: 15px;
 }
 img{
@@ -66,5 +71,20 @@ img{
   transition: opacity 0.5s ease;
 }
 img:hover{
-  opacity: 0.5;
+  opacity: 0.4;
 }
+.btn_post{
+  background-color: rgb(68, 212, 68);
+  width: 70px;
+  border: none;
+  padding: 7px;
+  border-radius: 15px;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+
+}
+.btn_post:hover{
+  opacity: 0.6;
+
+}
+
