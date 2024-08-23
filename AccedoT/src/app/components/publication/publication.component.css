@@ -1,12 +1,15 @@
+*{background-color: transparent;}
 .container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   width: 520px;
   background-color: #222;
   border-radius: 20px;
-  padding: 10px;
+  padding: 9px 10px;
   margin: 3rem auto;
+}
+.cont_input{
+  display: flex;
+  gap: 20px;
+  background-color: transparent;
 }
 .avatar {
   width: 40px;
@@ -22,33 +25,46 @@
   border: none;
   color: white;
   padding: 13px;
-  width: calc(100% - 50px);
+  width: 450px;
   border-radius:20px;
   cursor: pointer;
 }
 .input-box::placeholder {
   color: rgb(201, 201, 201);
 }
-.input-box:focus{
-  height: 80px;
-}
 .input-box:hover{
   background-color:#484848;
 }
+.input-box.active {
+  height: 80px;
+  border-radius: 10px;
+}
 .tabs {
-  width: 500px;
+  display: none;
+  margin-top: 10px;
+}
+.tabs.active {
   display: flex;
-  justify-content: space-evenly;
-  margin: 20px auto;
+  align-items: center;
+  background: none;
+  justify-content: space-around;
 }
-.tab {
-  border: none;
-  color: white;
-  padding: 10px;
+.btns{
+  padding: 8px;
+  width: 35%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #4e4e4e ; */
+  border: solid #696969 .5px;
+  border-radius: 15px;
+}
+img{
+  width: 20px;
   cursor: pointer;
-  font-weight: bold;
+  transition: opacity 0.5s ease;
 }
-.tab:hover{
-  background-color: #414141;
-  border-radius: 20px;
+img:hover{
+  opacity: 0.5;
 }
