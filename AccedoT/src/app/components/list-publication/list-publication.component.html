@@ -1,13 +1,4 @@
-<input type="file" (change)="fileChangeEvent($event)" />
-
-<image-cropper
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded($event)"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()"
-></image-cropper>
-
-<img [src]="croppedImage" />
+<div *ngIf="imageData$ | async as imageData">
+  <h2>Imagen Recortada:</h2>
+  <img [src]="imageData" alt="Imagen Recortada">
+</div>

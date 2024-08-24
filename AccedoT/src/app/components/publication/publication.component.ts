@@ -1,6 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
+import { ImageState } from '../../state/image.state';
+import { Store } from '@ngrx/store';
+import { setImageData } from '../../state/image.actions';
 
 @Component({
   selector: 'app-publication',
@@ -11,6 +14,8 @@ import 'cropperjs/dist/cropper.css';
 })
 export class PublicationComponent implements OnInit {
   private cropper: Cropper | null = null;
+
+  constructor(private store: Store<{ image: ImageState }>) {}
 
   ngOnInit(): void {
     const inputBox = document.getElementById('input-box');
@@ -74,13 +79,26 @@ export class PublicationComponent implements OnInit {
   cropImage() {
     if (this.cropper) {
       const croppedCanvas = this.cropper.getCroppedCanvas();
-      const croppedImage = document.createElement('img');
-      croppedImage.src = croppedCanvas.toDataURL();
+      const croppedImage = croppedCanvas.toDataURL();
+
+      // Despacha a NgRx
+      this.store.dispatch(setImageData({ imageData: croppedImage }));
+
+      // Actualiza la vista previa de la imagen
       const imagePreview = document.getElementById('image-preview');
       if (imagePreview) {
-        imagePreview.innerHTML = ''; // Clear previous image
-        imagePreview.appendChild(croppedImage);
+        imagePreview.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = croppedImage;
+        imagePreview.appendChild(img);
+      }
+
+      // Restablece el valor del input de archivo
+      const fileInput = document.getElementById('file-input') as HTMLInputElement;
+      if (fileInput) {
+        fileInput.value = ''; // Esto permite cargar una nueva imagen
       }
     }
   }
+
 }
