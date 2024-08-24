@@ -1,4 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import Cropper from 'cropperjs';
+import 'cropperjs/dist/cropper.css';
 
 @Component({
   selector: 'app-publication',
@@ -7,7 +9,8 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './publication.component.html',
   styleUrls: ['./publication.component.css']
 })
-export class PublicationComponent {
+export class PublicationComponent implements OnInit {
+  private cropper: Cropper | null = null;
 
   ngOnInit(): void {
     const inputBox = document.getElementById('input-box');
@@ -53,10 +56,31 @@ export class PublicationComponent {
           const img = document.createElement('img');
           img.src = e.target.result;
           imagePreview.appendChild(img);
+
+          // Initialize Cropper.js
+          this.cropper = new Cropper(img, {
+            aspectRatio: 1,
+            viewMode: 1,
+            autoCropArea: 1,
+            responsive: true,
+          });
         }
       };
 
       reader.readAsDataURL(file);
+    }
+  }
+
+  cropImage() {
+    if (this.cropper) {
+      const croppedCanvas = this.cropper.getCroppedCanvas();
+      const croppedImage = document.createElement('img');
+      croppedImage.src = croppedCanvas.toDataURL();
+      const imagePreview = document.getElementById('image-preview');
+      if (imagePreview) {
+        imagePreview.innerHTML = ''; // Clear previous image
+        imagePreview.appendChild(croppedImage);
+      }
     }
   }
 }
