@@ -5,7 +5,7 @@ import { Component, HostListener } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './publication.component.html',
-  styleUrl: './publication.component.css'
+  styleUrls: ['./publication.component.css']
 })
 export class PublicationComponent {
 
@@ -32,6 +32,31 @@ export class PublicationComponent {
         inputBox.classList.remove('active');
         tabs.classList.remove('active');
       }
+    }
+  }
+
+  openFileDialog() {
+    const fileInput = document.getElementById('file-input') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        const imagePreview = document.getElementById('image-preview');
+        if (imagePreview) {
+          imagePreview.innerHTML = ''; // Clear previous image
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          imagePreview.appendChild(img);
+        }
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 }

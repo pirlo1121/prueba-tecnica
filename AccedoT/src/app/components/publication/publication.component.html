@@ -2,18 +2,22 @@
 <div class="container" id="container">
   <div class="cont_input">
     <div class="avatar"></div>
-    <input type="text" placeholder="¿En qué estás pensando?" class="input-box" id="input-box" />
+    <div class="cont_post">
+      <div class="image-preview" id="image-preview"></div>
+      <input type="text" placeholder="¿En qué estás pensando?" class="input-box" id="input-box" readonly />
+    </div>
+    <input type="file" id="file-input" style="display: none;" (change)="onFileChange($event)" />
+
   </div>
   <div class="tabs" id="tabs">
     <div class="btns">
       <p style="color: rgb(224, 224, 224);">Agrega</p>
-      <img src="./../../../assets/imagenes.png" alt="">
-      <img src="./../../../assets/altoparlante.png" alt="">
-      <img src="./../../../assets/ordenador-portatil.png" alt="">
+      <img class="img" src="./../../../assets/imagenes.png" alt="" (click)="openFileDialog()" />
+      <img class="img" src="./../../../assets/altoparlante.png" alt="" />
+      <img class="img" src="./../../../assets/ordenador-portatil.png" alt="" />
     </div>
     <div class="btn_posts">
       <button class="btn_post">posts</button>
     </div>
   </div>
 </div>
-
