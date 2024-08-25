@@ -114,3 +114,21 @@ h1 {
   position: relative;
 }
 
+@media (max-width:600px) {
+  h1 {
+    font-size: 1.4rem;
+    margin: 2rem;
+  }
+  .container {
+    width: 350px;
+    background-color: #272727;
+    border-radius: 15px;
+    padding: 8px 12px;
+
+  }
+  .btns {
+    padding: 5px;
+    width: 40%;
+  }
+
+}
