@@ -15,6 +15,7 @@ import { setImageData } from '../../state/image.actions';
 export class PublicationComponent implements OnInit {
   private cropper: Cropper | null = null;
 
+
   constructor(private store: Store<{ image: ImageState }>) {}
 
   ngOnInit(): void {

@@ -1,7 +1,6 @@
-<div *ngIf="imageData$ | async as data">
-  <!-- <h2>Imagen Recortada:</h2> -->
-  <h2>{{data.textData}}</h2>
-
-  <img [src]="data.imageData" alt="">
-  <h2>{{data.textData}}</h2>
+<div class="container" *ngIf="imageData$ | async as data">
+  <div *ngIf="data.imageData" class="card">
+    <img class="img" [src]="data.imageData" alt="">
+    <p>{{data.textData}}</p>
+  </div>
 </div>
