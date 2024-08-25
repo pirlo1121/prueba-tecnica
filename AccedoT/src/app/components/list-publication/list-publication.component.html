@@ -1,7 +1,15 @@
 <div class="container" *ngIf="imageData$ | async as data">
-  <div *ngIf="data.imageData" class="card">
-    <p>{{data.textData}}</p>
-    <img class="img" [src]="data.imageData" alt="">
+  <!-- <div *ngIf="data.imageData" class="card"> -->
+  <div *ngIf="true" class="card">
+  <div class="head_data">
+    <div class="photo"></div>
+    <p>Maicol</p>
+  </div>
+
+    <!-- <p>{{data.textData}}</p> -->
+    <!-- <img class="img" [src]="data.imageData" alt=""> -->
+     <img class="img" src="./../../../assets/log.jpg" alt="">
+     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vitae a fugiat necessitatibus. Eius repudiandae excepturi, eos asperiores, impedit tenetur delectus voluptatem et ab dicta perspiciatis rerum consequatur! Incidunt, quos!</p>
     <!-- <p>{{data.textData}}</p> -->
   </div>
 </div>
