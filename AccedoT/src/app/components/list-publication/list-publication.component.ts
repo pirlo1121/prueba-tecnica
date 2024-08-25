@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ImageState } from '../../state/image.state';
-import { Store } from '@ngrx/store';
+import { State, Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,10 +12,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list-publication.component.css'
 })
 export class ListPublicationComponent {
-  imageData$: Observable<string | null>;
+  imageData$: Observable<{ imageData: string | null; textData: string | null }>;
 
   constructor(private store: Store<{ image: ImageState }>) {
-    this.imageData$ = this.store.select(state => state.image.imageData);
+    this.imageData$ = this.store.select(state => ({
+      imageData: state.image.imageData,
+      textData: state.image.text
+
+    }));
   }
 
   ngOnInit() {}

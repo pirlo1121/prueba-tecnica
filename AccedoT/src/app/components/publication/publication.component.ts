@@ -81,8 +81,13 @@ export class PublicationComponent implements OnInit {
       const croppedCanvas = this.cropper.getCroppedCanvas();
       const croppedImage = croppedCanvas.toDataURL();
 
+      // Captura el texto del input
+      const inputBox = document.getElementById('input-box') as HTMLInputElement;
+      const inputText = inputBox ? inputBox.value : '';
+
       // Despacha a NgRx
-      this.store.dispatch(setImageData({ imageData: croppedImage }));
+      console.log(inputText)
+      this.store.dispatch(setImageData({ imageData: croppedImage, text: inputText }));
 
       // Actualiza la vista previa de la imagen
       const imagePreview = document.getElementById('image-preview');
@@ -100,5 +105,4 @@ export class PublicationComponent implements OnInit {
       }
     }
   }
-
 }

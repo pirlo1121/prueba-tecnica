@@ -4,7 +4,7 @@ import { ImageState, initialState } from './image.state';
 
 const _imageReducer = createReducer(
   initialState,
-  on(setImageData, (state, { imageData }) => ({ ...state, imageData }))
+  on(setImageData, (state, { imageData, text }) => ({ ...state, imageData, text }))
 );
 
 export function imageReducer(state: ImageState | undefined, action: Action) {
