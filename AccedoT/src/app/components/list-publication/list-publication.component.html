@@ -1,6 +1,7 @@
 <div class="container" *ngIf="imageData$ | async as data">
   <div *ngIf="data.imageData" class="card">
-    <img class="img" [src]="data.imageData" alt="">
     <p>{{data.textData}}</p>
+    <img class="img" [src]="data.imageData" alt="">
+    <!-- <p>{{data.textData}}</p> -->
   </div>
 </div>

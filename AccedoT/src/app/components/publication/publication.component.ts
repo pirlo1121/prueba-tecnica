@@ -48,11 +48,12 @@ export class PublicationComponent implements OnInit {
     const fileInput = document.getElementById('file-input') as HTMLInputElement;
     fileInput.click();
   }
-
+  //Subir foto
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
+    const file = input.files?.[0];
+
+    if (file) {
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
@@ -64,17 +65,20 @@ export class PublicationComponent implements OnInit {
           imagePreview.appendChild(img);
 
           // Initialize Cropper.js
-          this.cropper = new Cropper(img, {
-            aspectRatio: 1,
-            viewMode: 1,
-            autoCropArea: 1,
-            responsive: true,
-          });
+          this.initializeCropper(img);
         }
       };
-
       reader.readAsDataURL(file);
     }
+  }
+
+  private initializeCropper(img: HTMLImageElement) {
+    this.cropper = new Cropper(img, {
+      aspectRatio: 1,
+      viewMode: 1,
+      autoCropArea: 1,
+      responsive: true,
+    });
   }
 
   cropImage() {
@@ -82,27 +86,24 @@ export class PublicationComponent implements OnInit {
       const croppedCanvas = this.cropper.getCroppedCanvas();
       const croppedImage = croppedCanvas.toDataURL();
 
-      // Captura el texto del input
       const inputBox = document.getElementById('input-box') as HTMLInputElement;
       const inputText = inputBox ? inputBox.value : '';
 
-      // Despacha a NgRx
-      console.log(inputText)
       this.store.dispatch(setImageData({ imageData: croppedImage, text: inputText }));
 
-      // Actualiza la vista previa de la imagen
-      const imagePreview = document.getElementById('image-preview');
-      if (imagePreview) {
-        imagePreview.innerHTML = '';
-        const img = document.createElement('img');
-        img.src = croppedImage;
-        imagePreview.appendChild(img);
-      }
-
-      // Restablece el valor del input de archivo
       const fileInput = document.getElementById('file-input') as HTMLInputElement;
+      // restaurar todo el inputt
+
       if (fileInput) {
-        fileInput.value = ''; // Esto permite cargar una nueva imagen
+        fileInput.value = '';
+        inputBox.value = '';
+        inputBox.classList.remove('active');
+        const tabs = document.getElementById('tabs');
+        if (tabs) tabs.classList.remove('active');
+
+        const imagePreview = document.getElementById('image-preview');
+        if (imagePreview) imagePreview.innerHTML = '';
+
       }
     }
   }
