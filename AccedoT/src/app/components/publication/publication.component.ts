@@ -59,12 +59,12 @@ export class PublicationComponent implements OnInit {
       reader.onload = (e: any) => {
         const imagePreview = document.getElementById('image-preview');
         if (imagePreview) {
-          imagePreview.innerHTML = ''; // Clear previous image
+          imagePreview.innerHTML = '';
           const img = document.createElement('img');
           img.src = e.target.result;
           imagePreview.appendChild(img);
 
-          // Initialize Cropper.js
+          // Init Cropper.js
           this.initializeCropper(img);
         }
       };

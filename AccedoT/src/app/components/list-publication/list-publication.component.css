@@ -34,7 +34,7 @@ p{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-image: url('./../../../assets/primavera.png');
+  background-image: url('../../../assets/photo.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -52,4 +52,5 @@ p{
   .head_data{
     margin-left: 14px;
   }
+
 }

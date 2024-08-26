@@ -13,7 +13,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/accedo-t",
+            "allowedCommonJsDependencies": [
+                "cropperjs"
+            ],
+            "outputPath": "dist/accedo",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
