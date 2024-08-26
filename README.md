@@ -1,4 +1,4 @@
-# prueba-tecnica ACCEDO
+ng s -o# prueba-tecnica ACCEDO
 
 en esta prueba tecnica simulamos un input para hacer publicaciones, similar al de redes como linkedin o facebook, podemos subir una imagen con un texto, la imagen puede ser recortada, esto es gracias a una biblioteca de javascript llamada cropperjs, tambien guardamos la publicacion con ngrx de angular
 
