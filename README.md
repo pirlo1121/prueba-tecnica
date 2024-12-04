@@ -1,4 +1,4 @@
-# prueba-tecnica ACCEDO
+# prueba-tecnica 
 
 #proyecto pequeño en el cual puedes subir una publicacion con texto e imagen, la imagen la podemos recortar con una biblioteca llamada cropperjs, y guardamos el estado de la publicacion con NGRX
 
